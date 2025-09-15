@@ -85,13 +85,14 @@
 
         .heart {
     position: absolute;
-    bottom: 0;          /* Start at the bottom */
-    left: 50%;          /* Start at the middle */
-    transform: translateX(-50%); /* Center it exactly */
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     color: #ff85a2;
     font-size: 20px;
-    animation: float 12s linear infinite;
-    opacity: 0.8;
+    animation: float 10s linear infinite;
+    opacity: 0.9;
+    pointer-events: none; /* prevent blocking clicks */
     }
 
     @keyframes float {
@@ -109,13 +110,13 @@
 </head>
 <body>
   <header>
-    <h1>Welcome to My Cute Site 🌸</h1>
+    <h1>Welcome to this cutie site🌸</h1>
   </header>
 
   <main>
     <div class="card">
-      <h2>Hii Welcome! 💖</h2>
-      <p>This is a cute little website just for you.</p>
+      <h2>Hi Welcome! 💖</h2>
+      <p>This is a cute little site just for you.</p>
       <button onclick="makeHearts()">Click me as you want for many hearts 💕</button>
     </div>
   </main>
@@ -125,20 +126,30 @@
   </footer>
 
   <script>
-    function makeHearts() {
-      for (let i = 0; i < 10; i++) {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "💖";
-        heart.style.left = (40 + Math.random() * 20) + "vw";
-        heart.style.fontSize = Math.random() * 20 + 20 + "px";
-        document.body.appendChild(heart);
+   function makeHearts() {
+  for (let i = 0; i < 10; i++) {
+    setTimeout(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
 
-        setTimeout(() => {
-          heart.remove();
-        }, 10000);
-      }
-    }
+      // Small random horizontal spacing
+      let offset = (Math.random() * 100) - 50; // -50px to +50px
+      heart.style.left = `calc(50% + ${offset}px)`;
+
+      // Random size variation
+      heart.style.fontSize = Math.random() * 10 + 20 + "px";
+
+      document.body.appendChild(heart);
+
+      // Remove heart after 12s (same as animation duration)
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }, i * 300); // delay each heart by 0.5s
+  }
+}
+
   </script>
 </body>
 </html>
