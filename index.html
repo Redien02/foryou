@@ -115,9 +115,21 @@
 
   <main>
     <div class="card">
-      <h2>Hi bae! 💖</h2>
-      <p>This is a cute little site just for you.</p>
-      <button onclick="makeHearts()">Click this as you want for many hearts 💕</button>
+      <h2>Hi Kitty!</h2>
+     <button id="heartBtn" onclick="handleClick()">Click this for more hearts 💕</button>
+<p id="message" class="fade" style="margin-top: 10px; color: #ff69b4; font-weight: bold;"></p>
+
+
+<style>
+  /* Smooth fade in/out */
+  .fade {
+    opacity: 0;
+    transition: opacity 1s ease; /* 1 second fade */
+  }
+  .fade.show {
+    opacity: 1;
+  }
+</style>
     </div>
   </main>
 
@@ -125,30 +137,60 @@
     Made with love 💝 | Susu na kha!
   </footer>
 
-  <script>
-   function makeHearts() {
-  for (let i = 0; i < 10; i++) {
-    setTimeout(() => {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "💖";
+<script>
+  let waitingForSmile = true;     // for the two-step toggle
+  let messageShownOnce = false;   // track if message was already shown
 
-      // Small random horizontal spacing
-      let offset = (Math.random() * 100) - 50; // -50px to +50px
-      heart.style.left = `calc(50% + ${offset}px)`;
+  function handleClick() {
+    const msg = document.getElementById("message");
+    const btn = document.getElementById("heartBtn");
 
-      // Random size variation
-      heart.style.fontSize = Math.random() * 10 + 20 + "px";
+    if (waitingForSmile) {
+      if (!messageShownOnce) {
+        // First time only → show smile message with fade in
+        msg.textContent = "pls smile first and ↑";
+        msg.classList.add("show");
+        btn.textContent = "click again 💖";
 
-      document.body.appendChild(heart);
+        waitingForSmile = false;
+        messageShownOnce = true; // mark as shown
+      } else {
+        // If message was already shown → spawn hearts directly
+        makeHearts();
+      }
+    } else {
+      // Second click of first cycle → hide message with fade out
+      msg.classList.remove("show");
 
-      // Remove heart after 12s (same as animation duration)
-      setTimeout(() => {
-        heart.remove();
-      }, 10000);
-    }, i * 500); // delay each heart by 0.5s
+      btn.textContent = "Now click more as you like💕";
+      makeHearts();
+      waitingForSmile = true;
+    }
   }
-}
+
+  function makeHearts() {
+    for (let i = 0; i < 10; i++) {
+      setTimeout(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+
+        // small spacing around center
+        let offset = (Math.random() * 100) - 50;
+        heart.style.left = `calc(50% + ${offset}px)`;
+
+        // random size
+        heart.style.fontSize = Math.random() * 20 + 20 + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 12000);
+      }, i * 500); // delay each heart
+    }
+  }
+</script>
 
   </script>
 </body>
