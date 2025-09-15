@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinky🌸</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
+      color: #444;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    header {
+      padding: 20px;
+      background: #ffb6c1;
+      border-bottom: 3px solid #ffaec9;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #fff;
+      text-shadow: 2px 2px #ff85a2;
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      width: 300px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    button {
+      background: #ffb6c1;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #ff85a2;
+    }
+
+    footer {
+      padding: 15px;
+      background: #ffb6c1;
+      color: white;
+      border-top: 3px solid #ffaec9;
+      font-size: 0.9rem;
+    }
+
+    /* Cute floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff85a2;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Cute Site 🌸</h1>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Hello Friend! 💖</h2>
+      <p>This is a cute little website just for you.</p>
+      <button onclick="makeHearts()">Click me for hearts 💕</button>
+    </div>
+  </main>
+
+  <footer>
+    Made with love 💝 | For you
+  </footer>
+
+  <script>
+    function makeHearts() {
+      for (let i = 0; i < 10; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 20 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 10000);
+      }
+    }
+  </script>
+</body>
+</html>
