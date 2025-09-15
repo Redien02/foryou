@@ -83,24 +83,27 @@
       font-size: 0.9rem;
     }
 
-    /* Cute floating hearts */
-    .heart {
-      position: absolute;
-      color: #ff85a2;
-      font-size: 20px;
-      animation: float 5s linear infinite;
-      opacity: 0.8;
+        .heart {
+    position: absolute;
+    bottom: 0;          /* Start at the bottom */
+    left: 50%;          /* Start at the middle */
+    transform: translateX(-50%); /* Center it exactly */
+    color: #ff85a2;
+    font-size: 20px;
+    animation: float 12s linear infinite;
+    opacity: 0.8;
     }
 
     @keyframes float {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) scale(1.5);
-        opacity: 0;
-      }
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.5);
+    opacity: 0;
+  }
+
     }
   </style>
 </head>
@@ -111,9 +114,9 @@
 
   <main>
     <div class="card">
-      <h2>Hello Friend! 💖</h2>
+      <h2>Hii Welcome! 💖</h2>
       <p>This is a cute little website just for you.</p>
-      <button onclick="makeHearts()">Click me for hearts 💕</button>
+      <button onclick="makeHearts()">Click me as you want for many hearts 💕</button>
     </div>
   </main>
 
@@ -127,7 +130,7 @@
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.innerHTML = "💖";
-        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.left = (40 + Math.random() * 20) + "vw";
         heart.style.fontSize = Math.random() * 20 + 20 + "px";
         document.body.appendChild(heart);
 
