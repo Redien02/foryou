@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pinky🌸</title>
+  <title>🌸</title>
   <style>
     /* Reset */
     * {
@@ -110,13 +110,14 @@
 </head>
 <body>
   <header>
-    <h1>Welcome to this cutie site🌸</h1>
+    <h1>Welcome to this little pinky site🌸</h1>
   </header>
 
   <main>
     <div class="card">
       <h2>Hi Kitty!</h2>
-     <button id="heartBtn" onclick="handleClick()">Click this for more hearts 💕</button>
+       <p>Flowers for you bading</p><br>
+     <button id="heartBtn" onclick="handleClick()">Click this💕</button>
 <p id="message" class="fade" style="margin-top: 10px; color: #ff69b4; font-weight: bold;"></p>
 
 
@@ -148,9 +149,10 @@
     if (waitingForSmile) {
       if (!messageShownOnce) {
         // First time only → show smile message with fade in
-        msg.textContent = "pls smile first and ↑";
+        msg.textContent = "Smile first and ↑";
         msg.classList.add("show");
         btn.textContent = "click again 💖";
+        
 
         waitingForSmile = false;
         messageShownOnce = true; // mark as shown
@@ -162,7 +164,7 @@
       // Second click of first cycle → hide message with fade out
       msg.classList.remove("show");
 
-      btn.textContent = "Now click more as you like💕";
+      btn.textContent = "enjoy💕";
       makeHearts();
       waitingForSmile = true;
     }
@@ -173,7 +175,7 @@
       setTimeout(() => {
         const heart = document.createElement("div");
         heart.classList.add("heart");
-        heart.innerHTML = "💖";
+        heart.innerHTML = "💐 🌸 🌼";
 
         // small spacing around center
         let offset = (Math.random() * 100) - 50;
